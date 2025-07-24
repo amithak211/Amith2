@@ -1,0 +1,7 @@
+.skill-card.tilt {
+  transition: transform 0.1s ease;
+  perspective: 1000px;
+}
+.skill-card.tilt:hover {
+  transform: rotateY(10deg) rotateX(10deg) scale(1.25);
+}
