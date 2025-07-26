@@ -5,7 +5,7 @@ const projects = [
   {
     title: 'Portfolio Website',
     description: 'A personal portfolio site built with React and Tailwind CSS.',
-    link: 'https://your-portfolio-link.com',
+    link: 'https://portfolio2-self-six.vercel.app/',
   },
   {
     title: 'E-commerce Store',

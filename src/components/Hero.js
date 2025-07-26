@@ -1,35 +1,26 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
-//import profileImage from '../assets/1.jpg';
-//import bgVideo from '../assets/217643_tiny.mp4';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-     {/*{/* Background Video 
+    <section className="relative h-screen flex items-center justify-center overflow-hidden" data-aos="fade-up">
+      {/* 🔹 Background Video */}
       <video
         autoPlay
         loop
         muted
-        className="absolute w-full h-full object-cover"
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src={bgVideo} type="video/mp4" />
+        <source src="/assets/228982_medium.mp4" type="video/mp4" />
         Your browser does not support the video tag.
-      </video>*/}
+      </video>
 
-      {/* Overlay */}
-      <div className="absolute w-full h-full bg-blue bg-opacity-60"></div>
+      {/* 🔹 Overlay with correct bg */}
+      <div className="absolute w-full h-full bg-black bg-opacity-60 z-10"></div>
 
-      {/* Content */}
-      <div
-        data-aos="fade-up"
-        className="z-10 text-center text-white px-4"
-      >
-        {/*<img
-          src={profileImage}
-          alt="Profile"
-          className="w-36 h-36 rounded-full mx-auto border-4 border-white mb-6"
-        />*/}
+      {/* 🔹 Content */}
+      <div className="z-20 text-center text-blue-500 px-4">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Hi, I'm Amith
         </h1>
