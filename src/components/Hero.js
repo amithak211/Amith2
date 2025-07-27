@@ -1,47 +1,78 @@
-import React from 'react';
-import Typewriter from 'typewriter-effect';
+import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 
-const Hero = () => {
+export default function Hero() {
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 3000); // Adjust to match animation speed
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden" data-aos="fade-up">
-      {/* 🔹 Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Background Video already handled globally in App.js */}
+
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative z-20 text-center px-6"
       >
-        <source src="/assets/228982_medium.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
-      {/* 🔹 Overlay with correct bg */}
-      <div className="absolute w-full h-full bg-black bg-opacity-60 z-10"></div>
-
-      {/* 🔹 Content */}
-      <div className="z-20 text-center text-blue-500 px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          Hi, I'm Amith
-        </h1>
-        <h2 className="text-xl md:text-2xl text-blue-300 font-medium mb-4">
-          <Typewriter
-            options={{
-              strings: ['Frontend Developer', 'React Enthusiast', 'Open Source Contributor'],
-              autoStart: true,
-              loop: true,
-            }}
-          />
-        </h2>
-        <a
-          href="#contact"
-          className="inline-block mt-4 px-6 py-2 border border-white rounded hover:bg-blue-500 transition"
+        <motion.h1
+          initial={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400"
         >
-          Contact Me
-        </a>
-      </div>
+          <TypeAnimation
+            sequence={['Hi, I\'m Amith', 10000]}
+            wrapper="span"
+            speed={50}
+            repeat={Infinity}
+          />
+        </motion.h1>
+
+        <p className="mt-4 text-xl md:text-2xl font-medium text-white">
+          Frontend Developer | React | Tailwind CSS Enthusiast
+        </p>
+
+        <motion.a
+          href="#contact"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="inline-block mt-8 px-8 py-3 rounded-full text-lg font-semibold text-white 
+                     bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 
+                     transition shadow-lg"
+        >
+          Get In Touch
+        </motion.a>
+
+        {/* Down Arrow Scroll Button */}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        >
+          <a href="#about" className="text-white">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+        </motion.div>
+      </motion.div>
+
+      {/* Reference for auto scroll (optional) */}
+      <div ref={scrollRef} />
     </section>
   );
-};
-
-export default Hero;
+}

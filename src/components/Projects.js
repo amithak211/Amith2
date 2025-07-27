@@ -21,7 +21,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-gray-900 text-white py-20">
+    <section id="projects" className=" py-20 px-6 backdrop-blur-md  dark:bg-black-900/40 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4">
         <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-12">
           Projects
